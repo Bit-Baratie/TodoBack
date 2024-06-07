@@ -2,10 +2,18 @@ package com.example.todolist;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TodoList {
 
     @Id
@@ -13,7 +21,8 @@ public class TodoList {
     private Long id;
 
     @Column(nullable = false)
-    private String title;
+    @ColumnDefault("false")
+    private boolean status;
 
     @Column(nullable = false)
     private String content;
